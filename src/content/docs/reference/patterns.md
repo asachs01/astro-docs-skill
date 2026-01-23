@@ -278,3 +278,61 @@ if (url.pathname === '/old') {
   return redirect('/new', 301);
 }
 ```
+
+## Azure Static Web Apps Deployment
+
+```yaml
+# .github/workflows/deploy.yml
+name: Deploy to Azure Static Web Apps
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          registry-url: 'https://npm.pkg.github.com'
+          scope: '@your-org'
+
+      - run: npm ci
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.GH_PACKAGES_TOKEN }}
+
+      - run: npm run build
+
+      - uses: Azure/static-web-apps-deploy@v1
+        with:
+          azure_static_web_apps_api_token: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN }}
+          action: 'upload'
+          app_location: '/'
+          output_location: 'dist'
+          skip_app_build: true  # Already built above
+```
+
+Key points:
+- **`skip_app_build: true`** — use when you've already run `npm run build` (needed for private registry auth)
+- **`registry-url` + `scope` + `NODE_AUTH_TOKEN`** — required for GitHub Packages private dependencies
+- **`output_location: 'dist'`** — Astro's default build output directory
+
+### `staticwebapp.config.json`
+
+Optional configuration for Azure SWA routing and headers:
+
+```json
+{
+  "navigationFallback": {
+    "rewrite": "/index.html"
+  },
+  "globalHeaders": {
+    "X-Frame-Options": "DENY",
+    "X-Content-Type-Options": "nosniff"
+  }
+}
+```

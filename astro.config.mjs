@@ -26,6 +26,7 @@ export default defineConfig({
 						{ label: 'Components & Pages', slug: 'guides/components' },
 						{ label: 'Content Collections', slug: 'guides/content-collections' },
 						{ label: 'Starlight Docs Sites', slug: 'guides/starlight' },
+						{ label: 'Starlight Theming', slug: 'guides/starlight-theming' },
 						{ label: 'Islands & Interactivity', slug: 'guides/islands' },
 					],
 				},
