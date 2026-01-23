@@ -592,3 +592,4 @@ Use the `context7` MCP tool or `firecrawl` to fetch current docs when needed. Pr
 - Use `client:*` directives only on framework components (React, Vue, Svelte, etc.)
 - TypeScript is supported natively; extend `astro/tsconfigs/strict` for best DX
 - Images in `src/` are optimized; images in `public/` are served as-is
+- **GitHub Pages base path**: When deploying to a subpath (e.g., `username.github.io/repo-name`), set both `site` and `base` in `astro.config.mjs`. Starlight sidebar `slug` references are handled correctly, but hero action `link` values in MDX frontmatter do **NOT** get `base` prepended automatically — you must include the full path (e.g., `/repo-name/getting-started/`) in frontmatter links

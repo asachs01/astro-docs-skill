@@ -83,7 +83,7 @@ const products = defineCollection({
 
 ## Documentation Site (Starlight)
 
-See the dedicated [Starlight guide](/guides/starlight/) for full details.
+See the dedicated [Starlight guide](/astro-docs-skill/guides/starlight/) for full details.
 
 ```bash
 npm create astro@latest -- --template starlight
