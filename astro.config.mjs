@@ -4,6 +4,8 @@ import starlight from '@astrojs/starlight';
 
 // https://astro.build/config
 export default defineConfig({
+	site: 'https://asachs01.github.io',
+	base: '/astro-docs-skill',
 	integrations: [
 		starlight({
 			title: 'Astro Docs Skill',
