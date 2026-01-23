@@ -1,0 +1,52 @@
+---
+title: Astro Docs Skill
+description: A Claude Code skill for scaffolding and developing Astro projects with correct v5 patterns.
+template: splash
+hero:
+  tagline: Scaffold Astro projects, components, and content collections with correct v5 patterns — automatically.
+  image:
+    file: ../../assets/houston.webp
+  actions:
+    - text: Get Started
+      link: /getting-started/installation/
+      icon: right-arrow
+    - text: View on GitHub
+      link: https://github.com/asachs01/astro-docs-skill
+      icon: external
+      variant: minimal
+---
+
+import { Card, CardGrid } from '@astrojs/starlight/components';
+
+## What It Does
+
+<CardGrid stagger>
+	<Card title="Project Scaffolding" icon="rocket">
+		Create complete Astro projects — blogs, docs sites, e-commerce, portfolios, and landing pages — with correct v5 structure.
+	</Card>
+	<Card title="Component Patterns" icon="puzzle">
+		Scaffold individual components, pages, layouts, and islands with proper TypeScript props, slots, and scoped styles.
+	</Card>
+	<Card title="Content Layer API" icon="document">
+		Set up content collections with the new Content Layer API, including `glob()` / `file()` loaders and Zod schemas.
+	</Card>
+	<Card title="Auto-Detection" icon="approve-check">
+		Automatically activates when working with `.astro` files or Astro project structure — no manual invocation needed.
+	</Card>
+	<Card title="Starlight Docs" icon="open-book">
+		Full support for scaffolding Starlight documentation sites with sidebar config, i18n, and content structure.
+	</Card>
+	<Card title="Live Docs Fallback" icon="external">
+		For edge cases or unfamiliar APIs, fetches live documentation from `docs.astro.build` using context7 or firecrawl.
+	</Card>
+</CardGrid>
+
+## Trigger Conditions
+
+The skill auto-activates when:
+
+- You ask to create a new Astro project or site
+- You're scaffolding components, pages, layouts, or islands
+- You ask about content collections, view transitions, or islands
+- The working directory contains `.astro` files or `astro.config.*`
+- You mention "Astro", "Starlight", or "astro components"
